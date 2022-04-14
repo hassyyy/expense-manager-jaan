@@ -47,8 +47,9 @@ gem "bootsnap", require: false
 
 gem 'avo'
 
-group :staging do
+group :staging, :production do
   gem "pg"
+  gem 'puma'
 end
 
 group :development, :test do
