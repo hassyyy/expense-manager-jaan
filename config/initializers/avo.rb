@@ -13,8 +13,16 @@ Avo.configure do |config|
   end
 
   ## == Authentication ==
-  # config.current_user_method = {}
-  # config.authenticate_with = {}
+  config.current_user_method do
+    AvoUser = Struct.new(:name, :email)
+    AvoUser.new("Hassyyy", "nmohamedasan@gmail.com")
+  end
+  include ActionController::HttpAuthentication::Basic
+  config.authenticate_with do
+    username = ENV['EM_USERNAME'] || 'username'
+    password = ENV['EM_PASSWORD'] || 'password'
+    http_basic_authenticate_or_request_with name: username, password: password
+  end
 
   ## == Authorization ==
   # config.authorization_methods = {
@@ -46,10 +54,6 @@ Avo.configure do |config|
   # config.cache_resources_on_index_view = true
   # config.search_debounce = 300
   # config.view_component_path = "app/components"
-  config.current_user_method do
-    AvoUser = Struct.new(:name, :email)
-    AvoUser.new("Hassyyy", "nmohamedasan@gmail.com")
-  end
   # config.display_license_request_timeout_error = true
 
 
