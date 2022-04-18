@@ -56,6 +56,21 @@ Avo.configure do |config|
   # config.view_component_path = "app/components"
   # config.display_license_request_timeout_error = true
 
+  config.main_menu = -> {
+    dashboard :home_dashboard
+    section "Banking", icon: "heroicons/solid/currency-rupee" do
+      resource :balance
+      resource :expense
+      resource :transaction
+      resource :credit_card
+      resource :saving
+      resource :loan
+    end
+    section "Others", icon: "heroicons/solid/view-grid" do
+      resource :trip
+    end
+  }
+
 
   # Where should the user be redirected when he hits the `/avo` url
   # config.home_path = nil
