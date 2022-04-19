@@ -14,8 +14,8 @@ Avo.configure do |config|
 
   ## == Authentication ==
   config.current_user_method do
-    AvoUser = Struct.new(:name, :email)
-    AvoUser.new("Hassyyy", "nmohamedasan@gmail.com")
+    AvoUser = Struct.new(:name)
+    AvoUser.new("Hassyyy's Expense Manager")
   end
   include ActionController::HttpAuthentication::Basic
   config.authenticate_with do
