@@ -74,7 +74,7 @@ Avo.configure do |config|
 
 
   # Where should the user be redirected when he hits the `/avo` url
-  # config.home_path = nil
+  config.home_path = '/avo/dashboards/home_dashboard'
 
   ## == Breadcrumbs ==
   # config.display_breadcrumbs = true
