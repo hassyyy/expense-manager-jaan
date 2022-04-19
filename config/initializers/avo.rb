@@ -55,6 +55,7 @@ Avo.configure do |config|
   # config.search_debounce = 300
   # config.view_component_path = "app/components"
   # config.display_license_request_timeout_error = true
+  config.buttons_on_form_footers = true
 
   config.main_menu = -> {
     dashboard :home_dashboard
