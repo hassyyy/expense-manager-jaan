@@ -10,7 +10,4 @@ class SavingResource < Avo::BaseResource
   field :month, as: :select, options: AppOptions::MONTHS.hashify, default: -> { Date.today.strftime("%b") }, hide_on: [:index]
   field :year, as: :number, min: AppOptions::MIN_YEAR, default: -> { Date.today.year }, hide_on: [:index]
   field :income, as: :boolean, default: false, hide_on: [:index]
-
-  filter MonthFilter
-  filter YearFilter
 end
