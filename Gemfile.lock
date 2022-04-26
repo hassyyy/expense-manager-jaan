@@ -71,7 +71,7 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
-    avo (2.3.0)
+    avo (2.3.1.pre.1)
       active_link_to
       addressable
       breadcrumbs_on_rails
@@ -274,7 +274,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  avo
+  avo (~> 2.3.1.pre.1)
   bootsnap
   capybara
   debug
