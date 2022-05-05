@@ -12,8 +12,7 @@ class AccountBalanceMetric < Avo::Dashboards::MetricCard
   query do
     balance = Balance.sum(:amount)
     credit_card_balances = CreditCard.sum do |card|
-      date = (Date.today.day <= card.billing_day) ? Date.today : Date.today.next_month
-      card.transactions.where(month: date.strftime("%b"), year: date.year).sum(:amount)
+      card.transactions.where(month: card.billing_period.strftime("%b"), year: card.billing_period.year).sum(:amount)
     end
 
     result (balance - credit_card_balances)

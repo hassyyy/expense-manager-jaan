@@ -13,13 +13,11 @@ class CreditCardResource < Avo::BaseResource
   field :loans, as: :has_many
 
   field :previous_balance, as: :number do |model, resource, view|
-    date = (Date.today.day <= model.billing_day) ? Date.today.last_month : Date.today
-    model.transactions.where(month: date.strftime("%b"), year: date.year).sum(:amount)
+    model.transactions.where(month: model.previous_month.strftime("%b"), year: model.previous_month.year).sum(:amount)
   end
 
   field :current_balance, as: :number do |model, resource, view|
-    date = (Date.today.day <= model.billing_day) ? Date.today : Date.today.next_month
-    model.transactions.where(month: date.strftime("%b"), year: date.year).sum(:amount)
+    model.transactions.where(month: model.current_month.strftime("%b"), year: model.current_month.year).sum(:amount)
   end
 
 end

@@ -10,6 +10,15 @@ class MonthFilter < Avo::Filters::SelectFilter
   end
 
   def default
-    Date.today.strftime("%b")
+    CreditCard.first.present? ? CreditCard.first.current_month.strftime("%b") : Date.today.strftime("%b")
+  end
+
+  def react
+    if applied_filters["CreditCardFilter"].present? &&
+       applied_filters["MonthFilter"].blank? &&
+       (applied_filters["YearFilter"].blank? || applied_filters["YearFilter"].eql?(Date.today.year))
+      card = CreditCard.find(applied_filters["CreditCardFilter"])
+      card.current_month.strftime("%b")
+    end
   end
 end
