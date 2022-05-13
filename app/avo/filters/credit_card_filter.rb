@@ -10,6 +10,6 @@ class CreditCardFilter < Avo::Filters::SelectFilter
   end
 
   def default
-    CreditCard.first&.id
+    params[:id] || CreditCard.first&.id
   end
 end
