@@ -9,10 +9,10 @@ class LoanResource < Avo::BaseResource
   field :amount, as: :number, placeholder: 'EMI', required: true
   field :credit_card, as: :belongs_to
   field :tenure, as: :number, min: 3, default: 12, placeholder: 'Months', required: true
-  field :start_date, as: :date, required: true, format: '%B, %Y'
+  field :start_date, as: :date, required: true, format: '%B %Y'
 
   field :end_date, as: :number do |model, resource, view|
-    (model.start_date + model.tenure.months).strftime("%B, %Y")
+    (model.start_date + model.tenure.months).strftime("%B %Y")
   end
 
 end
