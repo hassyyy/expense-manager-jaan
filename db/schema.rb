@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_13_070000) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_17_000000) do
   create_table "balances", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -63,6 +63,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_13_070000) do
     t.string "month"
     t.integer "year"
     t.integer "credit_card_id"
+    t.boolean "resolved"
   end
 
   create_table "trips", force: :cascade do |t|
