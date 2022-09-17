@@ -7,7 +7,7 @@ class SavingResource < Avo::BaseResource
 
   field :name, as: :text, link_to_resource: true, required: true
   field :amount, as: :number, required: true
-  field :month, as: :select, options: AppOptions::MONTHS.hashify, default: -> { Date.today.strftime("%b") }, hide_on: [:index]
-  field :year, as: :number, min: AppOptions::MIN_YEAR, default: -> { Date.today.year }, hide_on: [:index]
+  field :month, as: :select, options: AppOptions::MONTHS.hashify, default: -> { Date.today.strftime("%b") }
+  field :year, as: :number, min: AppOptions::MIN_YEAR, default: -> { Date.today.year }
   field :income, as: :boolean, default: false, hide_on: [:index]
 end
