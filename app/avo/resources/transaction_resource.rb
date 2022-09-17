@@ -11,7 +11,7 @@ class TransactionResource < Avo::BaseResource
   field :year, as: :number, min: AppOptions::MIN_YEAR, default: -> { Date.today.year }, hide_on: [:index]
   field :credit_card, as: :belongs_to, hide_on: [:index], required: true
 
-  filter MonthFilter
-  filter YearFilter
-  filter CreditCardFilter
+  # filter MonthFilter
+  # filter YearFilter
+  # filter CreditCardFilter
 end

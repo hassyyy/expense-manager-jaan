@@ -11,6 +11,6 @@ class ExpenseResource < Avo::BaseResource
   field :year, as: :number, min: AppOptions::MIN_YEAR, default: -> { Date.today.year }, hide_on: [:index]
   field :income, as: :boolean, default: false, hide_on: [:index]
 
-  filter MonthFilter
-  filter YearFilter
+  # filter MonthFilter
+  # filter YearFilter
 end
