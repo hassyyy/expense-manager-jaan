@@ -10,7 +10,7 @@ class TransactionResource < Avo::BaseResource
   field :month, as: :select, options: AppOptions::MONTHS.hashify, default: -> { Date.today.strftime("%b") }
   field :year, as: :number, min: AppOptions::MIN_YEAR, default: -> { Date.today.year }
   field :credit_card, as: :belongs_to, required: true
-  field :resolved, as: :boolean, hide_on: [:forms]
+  field :resolved, as: :boolean
 
   # filter MonthFilter
   # filter YearFilter
