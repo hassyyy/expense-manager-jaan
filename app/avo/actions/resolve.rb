@@ -5,8 +5,7 @@ class Resolve < Avo::BaseAction
     models, fields, current_user, resource = args.values_at(:models, :fields, :current_user, :resource)
 
     models.each do |model|
-      # Do something with your models.
-      model.update resolved: true
+      model.update(resolved: true) unless model.active
     end
   end
 end
