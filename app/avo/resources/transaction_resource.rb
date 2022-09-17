@@ -1,7 +1,6 @@
 class TransactionResource < Avo::BaseResource
   self.title = :name
   self.includes = []
-  self.record_selector = false
   self.after_create_path = :index
   self.after_update_path = :index
 
@@ -15,4 +14,5 @@ class TransactionResource < Avo::BaseResource
   # filter MonthFilter
   # filter YearFilter
   # filter CreditCardFilter
+  action Resolve
 end
