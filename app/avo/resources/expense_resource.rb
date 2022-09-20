@@ -5,6 +5,13 @@ class ExpenseResource < Avo::BaseResource
   self.after_create_path = :index
   self.after_update_path = :index
 
+  if Rails.env.staging?
+    self.resolve_query_scope = ->(model_class:) do
+      expenses = Expense.all.sort_by { |expense| Time.parse("#{expense.month} #{expense.year}") }.pluck(:id)
+      Expense.where(:id => expenses).unscoped.order(Arel.sql("array_position(ARRAY[#{expenses.join(',')}], expenses.id)"))
+    end
+  end
+
   field :name, as: :text, link_to_resource: true, required: true
   field :amount, as: :number, required: true
   field :month, as: :select, options: AppOptions::MONTHS.hashify, default: -> { Date.today.strftime("%b") }, only_on: [:forms]
