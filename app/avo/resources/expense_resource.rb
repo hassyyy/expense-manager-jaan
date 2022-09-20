@@ -7,7 +7,7 @@ class ExpenseResource < Avo::BaseResource
 
   if Rails.env.staging?
     self.resolve_query_scope = ->(model_class:) do
-      expenses = Expense.all.sort_by { |expense| Time.parse("#{expense.month} #{expense.year}") }.reverse.pluck(:id)
+      expenses = Expense.all.sort_by { |expense| [Time.parse("#{expense.month} #{expense.year}"), expense.updated_at] }.reverse.pluck(:id)
       Expense.where(:id => expenses).order(Arel.sql("array_position(ARRAY[#{expenses.join(',')}], expenses.id)"))
     end
   end
