@@ -8,7 +8,7 @@ class LoanResource < Avo::BaseResource
   if Rails.env.staging?
     self.resolve_query_scope = ->(model_class:) do
       loans = Loan.all.sort_by { |loan| Time.parse(loan.end_month) }.pluck(:id)
-      Loan.where(:id => loans).unscoped.order(Arel.sql("array_position(ARRAY[#{loans.join(',')}], loans.id)"))
+      Loan.where(:id => loans).order(Arel.sql("array_position(ARRAY[#{loans.join(',')}], loans.id)"))
     end
   end
 
