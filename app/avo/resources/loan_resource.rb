@@ -5,6 +5,13 @@ class LoanResource < Avo::BaseResource
   self.after_create_path = :index
   self.after_update_path = :index
 
+  if Rails.env.staging?
+    self.resolve_query_scope = ->(model_class:) do
+      loans = Loan.all.sort_by { |loan| Time.parse(loan.end_month) }.pluck(:id)
+      Loan.where(:id => loans).unscoped.order(Arel.sql("array_position(ARRAY[#{loans.join(',')}], loans.id)"))
+    end
+  end
+
   field :name, as: :text, link_to_resource: true, required: true
   field :amount, as: :number, placeholder: 'EMI', required: true
   field :credit_card, as: :belongs_to
