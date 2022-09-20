@@ -1,6 +1,5 @@
 class Loan < ApplicationRecord
   belongs_to :credit_card
-  default_scope { order(created_at: :asc) }
 
   def start_month
     start_date.strftime("%B %Y")
