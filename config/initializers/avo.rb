@@ -76,13 +76,14 @@ Avo.configure do |config|
   # Where should the user be redirected when he hits the `/avo` url
   config.home_path = '/avo/dashboards/home_dashboard'
 
+  # https://tailwindcss.com/docs/customizing-colors - Blue
   config.branding = {
     colors: {
-      background: "227 242 253",
-      100 => "#CEE7F8",
-      400 => "#399EE5",
-      500 => "#0886DE",
-      600 => "#066BB2",
+      background: "239 246 255",
+      100 => "#dbeafe",
+      400 => "#60a5fa",
+      500 => "#3b82f6",
+      600 => "#2563eb",
     },
     logo: "/assets/wallet.png",
     logomark: "/assets/wallet.png",
