@@ -7,5 +7,5 @@ class BalanceResource < Avo::BaseResource
 
   field :name, as: :text, link_to_resource: true, required: true
   field :amount, as: :number, required: true
-  field :updated_at, as: :date_time, format: '%B %d, %Y', hide_on: [:forms]
+  field :updated_at, as: :date_time, format: 'DD', hide_on: [:forms]
 end

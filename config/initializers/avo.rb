@@ -73,9 +73,21 @@ Avo.configure do |config|
     end
   }
 
-
   # Where should the user be redirected when he hits the `/avo` url
   config.home_path = '/avo/dashboards/home_dashboard'
+
+  config.branding = {
+    colors: {
+      background: "227 242 253",
+      100 => "#CEE7F8",
+      400 => "#399EE5",
+      500 => "#0886DE",
+      600 => "#066BB2",
+    },
+    logo: "/assets/wallet.png",
+    logomark: "/assets/wallet.png",
+    favicon: "/assets/wallet.ico"
+  }
 
   ## == Breadcrumbs ==
   # config.display_breadcrumbs = true
