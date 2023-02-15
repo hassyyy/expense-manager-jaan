@@ -15,5 +15,5 @@ class TransactionResource < Avo::BaseResource
   field :via, as: :select, only_on: :forms, options: { 'Cash': :Cash, 'Bank': :Bank }, default: 'Cash'
   field :income, as: :boolean, default: false, hide_on: [:index]
 
-  filter ViaFilter
+  # filter ViaFilter
 end
