@@ -1,4 +1,6 @@
 class Transaction < ApplicationRecord
-  belongs_to :credit_card
-  default_scope { order(created_at: :desc) }
+  default_scope { order(updated_at: :desc) }
+
+  validates :via, presence: true,
+                     inclusion: { in: ['Cash', 'Bank'] }
 end

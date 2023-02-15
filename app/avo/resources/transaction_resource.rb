@@ -11,13 +11,9 @@ class TransactionResource < Avo::BaseResource
   field :month, as: :text do |model, resource, view|
     "#{model.month} #{model.year}"
   end
-  field :credit_card, as: :belongs_to, required: true
-  field :resolved, as: :boolean
+  field :via, as: :badge, options: { info: 'Bank', success: 'Cash' }
+  field :via, as: :select, only_on: :forms, options: { 'Cash': :Cash, 'Bank': :Bank }, default: 'Cash'
+  field :income, as: :boolean, default: false, hide_on: [:index]
 
-  # filter MonthFilter
-  # filter YearFilter
-  # filter CreditCardFilter
-  filter ResolvedFilter
-  action Expensify
-  action Resolve
+  filter ViaFilter
 end

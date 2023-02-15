@@ -3,7 +3,6 @@ class HomeDashboard < Avo::Dashboards::BaseDashboard
   self.name = "Home"
 
   # cards go here
-  card CurrentBalanceMetric
-  card AccountBalanceMetric
-  card SavingsBalanceMetric
+  card CashBalanceMetric
+  card BankBalanceMetric
 end

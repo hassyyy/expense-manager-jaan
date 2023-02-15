@@ -11,9 +11,9 @@
   <% last_12_months.each do |date| %>
     <% month = date.strftime("%b") %>
     <% year = date.strftime("%Y") %>
-    <% expenses = Expense.where(month: month, year: year.to_i) %>
-    <% income = expenses.where(income: true).sum(:amount) %>
-    <% spent = expenses.where.not(income: true).sum(:amount) %>
+    <% transactions = Transaction.where(month: month, year: year.to_i) %>
+    <% income = transactions.where(income: true).sum(:amount) %>
+    <% spent = transactions.where.not(income: true).sum(:amount) %>
     <% balance = income - spent %>
 
     <tr class='data'>

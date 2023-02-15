@@ -15,14 +15,14 @@ Avo.configure do |config|
   ## == Authentication ==
   config.current_user_method do
     AvoUser = Struct.new(:name)
-    AvoUser.new("Hassyyy's Expense Manager")
+    AvoUser.new("Jaan's Expense Manager")
   end
   include ActionController::HttpAuthentication::Basic
-  # config.authenticate_with do
-  #   username = ENV['EM_USERNAME'] || 'username'
-  #   password = ENV['EM_PASSWORD'] || 'password'
-  #   http_basic_authenticate_or_request_with name: username, password: password
-  # end
+  config.authenticate_with do
+    username = ENV['EM_USERNAME'] || 'username'
+    password = ENV['EM_PASSWORD'] || 'password'
+    http_basic_authenticate_or_request_with name: username, password: password
+  end
 
   ## == Authorization ==
   # config.authorization_methods = {
@@ -40,7 +40,7 @@ Avo.configure do |config|
 
   ## == Customization ==
   # config.app_name = 'Avocadelicious'
-  # config.avo_title = 'Hassyyy'
+  config.app_name = "Jaan's Expense Manager"
   config.timezone = 'IST'
   # config.currency = 'USD'
   config.per_page = 30
@@ -59,18 +59,9 @@ Avo.configure do |config|
 
   config.main_menu = -> {
     dashboard :home_dashboard
-    dashboard :monthly_expenses_dashboard
-    section "Banking", icon: "heroicons/solid/currency-rupee" do
-      resource :balance
-      resource :expense
-      resource :transaction
-      resource :credit_card
-      resource :saving
-      resource :loan
-    end
-    section "Others", icon: "heroicons/solid/view-grid" do
-      resource :trip
-    end
+    dashboard :monthly_transactions_dashboard
+
+    resource :transaction
   }
 
   # Where should the user be redirected when he hits the `/avo` url
