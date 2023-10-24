@@ -12,7 +12,7 @@ class TransactionResource < Avo::BaseResource
     "#{model.month} #{model.year}"
   end
   field :via, as: :badge, options: { info: 'Bank', success: 'Cash' }
-  field :via, as: :select, only_on: :forms, options: { 'Cash': :Cash, 'Bank': :Bank }, default: 'Bank'
+  field :via, as: :select, only_on: :forms, options: { 'Bank': :Bank, 'Cash': :Cash  }, default: 'Bank'
   field :income, as: :boolean, default: false, hide_on: [:index]
 
   # filter ViaFilter
