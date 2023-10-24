@@ -13,6 +13,6 @@ class CashBalanceMetric < Avo::Dashboards::MetricCard
     income = Transaction.where(income: true, via: 'Cash').sum(:amount)
     spent = Transaction.where(income: false, via: 'Cash').sum(:amount)
 
-    result (income - spent)
+    result number_to_currency(income - spent, AppOptions::CURRENCY_FORMAT.merge(format: "%n"))
   end
 end
